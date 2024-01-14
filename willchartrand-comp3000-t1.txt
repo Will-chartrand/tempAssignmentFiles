@@ -1,0 +1,89 @@
+1.
+	Version of linux distribution and version of kernel:
+		uname -a
+
+	Ram:
+	    	cat /proc/meminfo
+		sudo lshw -c memory	
+	
+	Path of current shell:
+		cat $SHELL
+
+	Current network interfaces and IP addresses:
+		ifconfig
+
+2.
+	
+	which - returns the paths of the scripts that would be executed on specific command invocations
+	pwd - prints the working directory
+	who - print information about all currently logged-in users
+	whoami - print the user name associated with the current effective user ID
+	whereis - locates the binary, source and manual files for the specified command names
+	whatis - searches the manual page names and displays the descriptions of any name matched
+
+3. 
+
+	The "type" command can be used, followed by the command name in order to tell if the command is internal or external
+
+	./hello specifies that the command is in the current directory, so the OS doesn't have to search through the entire PATH before finally checking it.
+
+	Three external commands on the system:
+		htop
+		vim
+		nano
+
+4.
+	
+	To find documentation on the export command, one may use the --help parameter when executing the command
+
+	You can add the current directory to PATH with
+		export PATH=$PATH:/.
+	
+	To make it permanent, you may add it to the .bashrc file so that it runs when the terminal is opened
+
+5.
+	One may use the ls command with the -lg parameters, followed by the path to the file to see the permissions
+
+	htop: -rwxr-xr-x, owned by root
+	htop: lrwxrwxrwx, owned by root
+	nano: -rwxr-xr-x, owned by root
+	
+6. 
+	
+	r - read
+	w - write
+	x - execute
+	- - no permission
+
+7. 
+
+	passwd:
+		owner - root
+		group - root
+		permissions - -rw-r--r--
+
+	shadow:
+		owner - shadow
+		group - shadow
+		permissions - -rw-r-----
+
+8. 
+
+	Execute permission on a directory mean that you can access the directory and any of the files within it. It also allows you to look at extended information on said files
+
+9.
+
+	ls can be passed the -a flag to see the hidden files
+	it can also be passed the -l and -g flags to see the permissions and groups respectively
+
+	You may make a file hidden by putting a period to the front of the filename
+
+10.
+
+	It seems as though the program is confined to the current directory - the parent directories are not accessible
+
+	Ctrl-c can be used to exit the shell whereas bash does not have the same functionality
+
+	Aliases do not seem to work, such as ll
+
+	File types are not colored

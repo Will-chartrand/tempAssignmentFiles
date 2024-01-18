@@ -1,0 +1,82 @@
+
+
+
+Part A 
+
+1. 
+Looking at the .s file, I can see that there are labels being used to denote various things such as the main function.
+I can also see what I believe to be registers being used, and we briefly mentioned CPU registers as well as caches.
+
+2.
+As seen i nthe x86 assembly walkthrough provided, there is a direct "call" statement to printf. This isn't seen in our own .s file, 
+which would lead me to believe it's not actually being called. I think it could be the case that the library that includes the printf function 
+is dynamically linked, meaning the binary will only have access to the function itself at runtime.
+
+3.
+I think the main difference is that syscall-hello.s uses a buffer and it is used on line 16. It is also associated with the globl keyword.
+
+4.
+	The functions seem to use the same labels, as I can see that there is a main label being used. 
+	The "ret" keyword is at the end of these blocks, so they may be the return statements.
+	The names for the primitive data types are included in the assembly such as long and string, so I believe C and assembly are similar in this regard.
+	Symbols seem to work in the same way as they do in C. Symbols are like variable or function names - they consist of letters, numbers, underscores, etc., and are used to differentiate different blocks.
+
+
+Part B 
+
+1.
+	Static size: 900344
+	Dynamic size: 16064
+
+	As you can see, the static size is much greater than the dynamic. 
+	This is because the dynamic doesn't need to have the external libraries contained within it, saving a lot of space.
+
+2.
+	syshello dynamic: 34
+	syshello static: 17
+
+	hello dynamic: 38
+	hello static: 18
+
+	The dynamic C files always generate more system calls because they need to ask the system for the functions when they need to use them. 
+	The functions don't come contained within the program itself.
+
+3.
+	hello dynamic: 1
+	hello static: 
+	sys hello dynamic: 1
+	sys hello static: 
+
+	They seem to have the same number of library calls, 
+	this is due to the fact that the code invokes the same number of functions, 
+	it is only the way that these functions are invoked that differs.
+
+4.
+
+	One is dynamically linked and the other is not
+
+5.
+	It looks like the dynamic hello C files have the standard library linked. 
+	Running this command on the static files has no effect - just a message stating that they are not dynamic and thus invalid.
+
+6.
+	The system did not find the math library. 
+	You may tell the compiler to link with the right library by using the -l command followed by the name of the library immediately after (no spaces)
+
+
+Part C
+
+1. 
+	The addresses may be inconsistent between runs for a variety of reasons.
+	It could be the case that the operating system's mechanism for allocating memory doesn't allow for the same memory to be used every time. 
+	It could also be possible that the memory that was used for the previous execution is now being used by another process.
+
+2.
+	The stack seems to be in memory, most likely in RAM
+	The heap also seems to be in the same location, as they are accessed approximately in the same frequency.
+	Code would probably be stored in storage when not being edited and in RAM while being changed. 
+	Global variables when the code is running may be stored in the caches if not in RAM, as they need to be accessed more quickly and frequently.
+
+
+
+	

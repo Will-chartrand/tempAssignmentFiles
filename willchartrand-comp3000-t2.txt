@@ -1,19 +1,19 @@
-
+Will Chartrand 101229796
 
 
 Part A 
 
 1. 
-Looking at the .s file, I can see that there are labels being used to denote various things such as the main function.
-I can also see what I believe to be registers being used, and we briefly mentioned CPU registers as well as caches.
+  Looking at the .s file, I can see that there are labels being used to denote various things such as the main function.
+  I can also see what I believe to be registers being used, and we briefly mentioned CPU registers as well as caches.
 
 2.
-As seen i nthe x86 assembly walkthrough provided, there is a direct "call" statement to printf. This isn't seen in our own .s file, 
-which would lead me to believe it's not actually being called. I think it could be the case that the library that includes the printf function 
-is dynamically linked, meaning the binary will only have access to the function itself at runtime.
+  As seen i nthe x86 assembly walkthrough provided, there is a direct "call" statement to printf. This isn't seen in our own .s file, 
+  which would lead me to believe it's not actually being called. I think it could be the case that the library that includes the printf function 
+  is dynamically linked, meaning the binary will only have access to the function itself at runtime.
 
 3.
-I think the main difference is that syscall-hello.s uses a buffer and it is used on line 16. It is also associated with the globl keyword.
+  I think the main difference is that syscall-hello.s uses a buffer and it is used on line 16. It is also associated with the globl keyword.
 
 4.
 	The functions seem to use the same labels, as I can see that there is a main label being used. 

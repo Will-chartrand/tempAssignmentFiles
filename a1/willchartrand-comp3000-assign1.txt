@@ -1,0 +1,44 @@
+1.
+LD_LIBRARY_PATH is an environment variable used for finding shared libraries on runtime. Putting the path to our library allows the program to see the library that we want to use.
+
+This method of using an environment variable to store the path to the library makes it modular in the sense 
+that it may be used anywhere without having to manually link it during compilation.
+
+
+2.
+Looking at the 3000banner.c code, there is a ternary that searches for an environment variable named BANNERFILE, and uses it to display the banner if it exists.
+Using this information, we may create this BANNERFILE variable and store in it the path to our desired banner. In my particular case the code would look like the following:
+
+	export BANNERFILE=~/a1/banner.txt
+
+
+3.
+
+It seems as though directives are being used to run different code depending on the operating system that it is being compiled on. Using "#ifdef __linux__" to run the linux specific code, and an "elif _WIN32" to run the Windows-specific code
+
+getline() is a Linux-specific function, so even though when running this code on a Windows system it is declared, it is not usable since it is dependent on Linux's underlying functionality and libraries. This is known as unavailability. 
+As there is no direct equivalent for Windows, trying to compile it using such a system would give an error.
+
+
+4.
+It is most likely the getline() function that is allocating memory for the input buffer, and it is doing it dynamically. This means that the size of the input is unspecified, thus the amount of storage needed to hold the input not allocated at compile time but at run-time. With that being said, dynamically allocated memory must be freed using the free() function. Otherwise, the program may be subject to memory leaks.
+
+
+5.
+Attached
+
+
+6.
+The problem would be that the program does not function as intended; Entering the "clear screen" option would not clear the screen but would exit the program, leaving the banner still visible in the terminal.
+The cause of this issue would be related to the fact that the string "clear" is a Linux command that clears all characters from the terminal, and this is responsible for the functionality of this third menu option. Removing it would remove the functionality entirely.
+
+
+7.
+execvpe allows for the use of the PATH environment variable to search for the file to use, whereas execve requires an absolute or relative path.
+
+8.
+'environ' is a variable that holds an array of string pointers which represents the environment variables in the user's environment. It is invoked when the exec command (mentioned in the previous question) is called. It's not seen in the source code because it is provided by the C standard library. 
+
+
+9.
+This arragnement would most likely lead to worse portability. In this updated assembly, the value of 59 is being moved into the %eax register, which is the register that is commonly associated with making system calls.I think that it's less portable because it's using a specific value for the system call, and not a method that gets the value. This is due to the fact that it may be possible for different conventions for the system call codes to be used, thus making 59 not valid.

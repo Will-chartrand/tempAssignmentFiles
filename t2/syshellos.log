@@ -1,0 +1,18 @@
+execve("./syshello.static", ["./syshello.static"], 0x7ffcacbe8350 /* 33 vars */) = 0
+arch_prctl(0x3001 /* ARCH_??? */, 0x7ffcba630ed0) = -1 EINVAL (Invalid argument)
+brk(NULL)                               = 0xf71000
+brk(0xf71dc0)                           = 0xf71dc0
+arch_prctl(ARCH_SET_FS, 0xf713c0)       = 0
+set_tid_address(0xf71690)               = 1626
+set_robust_list(0xf716a0, 24)           = 0
+rseq(0xf71d60, 0x20, 0, 0x53053053)     = 0
+uname({sysname="Linux", nodename="comp3000-w24-nodesktop", ...}) = 0
+prlimit64(0, RLIMIT_STACK, NULL, {rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+readlink("/proc/self/exe", "/home/student/t2/syshello.static", 4096) = 32
+getrandom("\xba\xa3\xa5\xcc\x8d\x60\x93\xa8", 8, GRND_NONBLOCK) = 8
+brk(0xf92dc0)                           = 0xf92dc0
+brk(0xf93000)                           = 0xf93000
+mprotect(0x4c1000, 16384, PROT_READ)    = 0
+write(1, "Hello world!\n", 13)          = 13
+exit_group(13)                          = ?
++++ exited with 13 +++

@@ -1,0 +1,18 @@
+ CCCCC   OOOOO  MM    MM PPPPPP  333333   00000   00000   00000 
+CC    C OO   OO MMM  MMM PP   PP    3333 00   00 00   00 00   00
+CC      OO   OO MM MM MM PPPPPP    3333  00   00 00   00 00   00
+CC    C OO   OO MM    MM PP          333 00   00 00   00 00   00
+ CCCCC   OOOO0  MM    MM PP      333333   00000   00000   00000 
+                                                                
+ OOOOO                                tt    iii                 
+OO   OO pp pp     eee  rr rr    aa aa tt        nn nnn   gggggg 
+OO   OO ppp  pp ee   e rrr  r  aa aaa tttt  iii nnn  nn gg   gg 
+OO   OO pppppp  eeeee  rr     aa  aaa tt    iii nn   nn ggggggg 
+ OOOO0  pp       eeeee rr      aaa aa  tttt iii nn   nn      gg 
+        pp                                               ggggg  
+ SSSSS                tt                                        
+SS      yy   yy  sss  tt      eee  mm mm mmmm   sss             
+ SSSSS  yy   yy s     tttt  ee   e mmm  mm  mm s                
+     SS  yyyyyy  sss  tt    eeeee  mmm  mm  mm  sss             
+ SSSSS       yy     s  tttt  eeeee mmm  mm  mm     s            
+         yyyyy   sss                            sss             

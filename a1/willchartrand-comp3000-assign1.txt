@@ -1,5 +1,5 @@
 1.
-LD_LIBRARY_PATH is an environment variable used for finding shared libraries on runtime. Putting the path to our library allows the program to see the library that we want to use.
+LD_LIBRARY_PATH is an environment variable used for finding shared libraries at runtime. Storing the path to our library in this variable allows the program to see the library that we want to use.
 
 This method of using an environment variable to store the path to the library makes it modular in the sense 
 that it may be used anywhere without having to manually link it during compilation.
@@ -7,7 +7,7 @@ that it may be used anywhere without having to manually link it during compilati
 
 2.
 Looking at the 3000banner.c code, there is a ternary that searches for an environment variable named BANNERFILE, and uses it to display the banner if it exists.
-Using this information, we may create this BANNERFILE variable and store in it the path to our desired banner. In my particular case the code would look like the following:
+Using this information, we may create this BANNERFILE variable and store it in the path to our desired banner. In my particular case the code would look like the following:
 
 	export BANNERFILE=~/a1/banner.txt
 
@@ -21,7 +21,7 @@ As there is no direct equivalent for Windows, trying to compile it using such a 
 
 
 4.
-It is most likely the getline() function that is allocating memory for the input buffer, and it is doing it dynamically. This means that the size of the input is unspecified, thus the amount of storage needed to hold the input not allocated at compile time but at run-time. With that being said, dynamically allocated memory must be freed using the free() function. Otherwise, the program may be subject to memory leaks.
+It is most likely the getline() function that is allocating memory for the input buffer, and it is doing it dynamically. This means that the size of the input is unspecified, thus the amount of storage needed to hold the input is not allocated at compile time but at run-time. With that being said, dynamically allocated memory must be freed using the free() function. Otherwise, the program may be subject to memory leaks.
 
 
 5.

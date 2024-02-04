@@ -1,0 +1,69 @@
+COMP 3000 Tutorial 4
+Will Chartrand
+ID: 101229796
+Date of Submission: Friday February 8th, 2024
+
+
+1.
+The program doesn't need to have the new user's password for authentication because the setup of the file required us to set the owner to root, and give it permission to change the user ID and group ID with the following code:
+
+	sudo chown root:root 3000userlogin
+	sudo chmod u+s 3000userlogin
+
+Since the process has root-user privileges as well as the additional permissions, it may make these changes without having to go through the authentication process.
+
+
+2.
+The LS_COLORS environment variable may be set in 3000userlogin.c in the same place where the other environment variables are set. It's responsible for how the terminal colours look when navigating through the file system, so using the same value that's stored for the current user will allow the newly logged in user to have the same colors.
+
+
+3.
+getpwnam() returns a pointer to a struct with several fields such as pw_name, pw_uid, pw_gid, pw_dir and pw_shell.
+
+running the command "man getpwnam", it is stated that the file "/etc/passwd" is accessed to get this information. 
+
+
+4.
+When running as a regular user, nothing changes as the permissions necessary to make the changes are not in place. This results in the program exiting with a return value of -3. As the group ID is the first change to be attempted, the program fails at this step and exits without attempting the subsequent steps.
+
+When running 3000userlogin after setting the proper permissions, we can see that the uid, gid and egid are all 1000, whereas the euid is 0.
+
+
+5.
+The reason for changing the GID before the UID is related to file and directory permissions. If a process needs to access files or directories that are only accessible to a specific group, changing the GID first ensures that the process has the necessary group permissions before switching to a different user.
+
+When trying to set the user ID first, we get an error stating that the gid failed to be set. 
+
+
+6.
+The first instance on line 55 seems to be setting the first element of shell_argv to "bash". This array may be used to send command line arguments to the execve when it runs bash.
+
+The second instance on line 62 is setting the SHELL environment variable to the path in which the shell resides. 
+
+The third instance on line 66 is a call to execve, which is the command that is actually starting the bash process.
+
+The fourth instance on line 68 is just in an error message stating that bash failed to execute.
+
+
+7.
+8.
+By default, I am unable to set 3000shell to be someuser's new login shell. The chsh command results in an error message stating that 3000shell is an invalid shell.
+One may fix this problem by adding the path to 3000shell to the /etc/shells files.
+
+When running a command such as htop, immediate I get the error "Error opening terminal: unknown."
+And when trying to run "man ls", I get an error stating "WARNING: terminal is not fully functional" before it displays the man page.
+
+To fix this problem, it is possible to set the shell environment variable back to what it used to be (/bin/bash) instead of the user's shell from /etc/passwd.
+
+
+9.
+The user's default shell does not have to be a regular shell. It could be any executable, however this might cause problems because there might be other processes that expect your shell to execute commands as intended.
+One may test this by adding any executable's path to the /etc/shells file, and changing their current shell to it using chsh
+
+
+10.
+No, there are a few others. This may be checked using the "printenv" command, as it lists all of the environment variables.
+
+
+11.
+Sometimes the data is stored in /etc/shadow instead of its usual location. This would result in the data returned by getpwnam() returning unexpected data. To get the data from /etc/shadow, you can use "getspnam()" instead.

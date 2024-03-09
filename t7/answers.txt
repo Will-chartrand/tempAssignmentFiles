@@ -1,0 +1,26 @@
+Will Chartrand
+ID: 101229796
+
+1.
+
+  "cp /dev/urandom f1" copies the contents of /dev/urandom into a new file named f1.
+  This file is responsible for generating random data, so printing the contents of f1 reveals a large amount of garbage data
+
+  "sudo cp -a /dev/urandom f2" is very similar to the previous command, except it stores the data in a file named f2, 
+  and uses the -a flag. This flag makes it so that the new file has the same privileges as /dev/urandom, making it have root privileges
+
+
+  "sudo mknod f3 c 1 9" creates a special file "f3" that is a character device file (specified using the "c"), and uses the major and minor numbers of 1 and 9. These two numbers together represent the /dev/urandom file, and we can see this when using the "ll" command on the /dev directory.
+
+  Effectively f1 and f3 are the same file, apart from the privileges.
+
+
+2.
+
+  mkfifo pipe1
+  ls > pipe1 & wc < pipe1 
+
+
+3.
+
+  

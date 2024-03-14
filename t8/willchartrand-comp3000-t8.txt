@@ -1,0 +1,20 @@
+COMP 3000 Tutorial 8
+Will Chartrand
+ID: 101229796
+Date of Submission: Thursday March 14th
+
+
+1.
+
+  copy_from_user() and copy_to_user() are different in the fact that they are used for moving multiple things from user space to kernel space and vice versa. 
+
+  These functions are also more versatile and reliable. put_user() and get_user() access the memory directly which is not ideal if something goes wrong. Accessing them indirectly will raise a safer exception if something were to go wrong.
+
+
+2.
+
+  ioctl stands for input/output control. It's a command which allows one to control the properties of a specific device.
+  Read() and write() are useful for reading files and such, but ioctl allows for a more granular interface for dealing with devices (special files)
+
+  3000physicalview.c implements its ioctl in the form of a function called physicalview_ioctl. This function takes in a file pointer,
+  an integer for a command, and an unsigned long for the address being accessed. 
